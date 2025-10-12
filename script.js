@@ -116,10 +116,16 @@ function showgameModal(game) {
   document.querySelector("#dialog-content").innerHTML = /*html*/ `
     <img src="${game.image}" alt="Poster af ${game.title}" class="game-poster">
     <div class="dialog-details">
-      <h2>${game.title} <span class="game-year">(${game.year})</span></h2>
+     <p class="game-description">${game.description}</p>
       <p class="game-genre">${game.genre}</p>
-      <p class="game-rating">⭐ ${game.rating}</p>
-      <p class="game-description">${game.description}</p>
+      <p class="game-rating"> ${game.rating}</p>
+      <p class="game-players">${game.players.min} til ${game.players.max}</p>
+      <p class="game-difficulty">${game.difficulty}</p>
+      <p class="game-age">${game.age}</p>
+      <p class="game-playtime">${game.playtime}</p>
+      <p class="game-location">${game.location}</p>
+      <p class="game-shelf">${game.shelf}</p>
+      <p class="game-language">${game.language}</p>
     </div>
   `;
 
