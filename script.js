@@ -59,6 +59,7 @@ function displaygame(game) {
            alt="Poster of ${game.title}" 
            class="game-poster" />
       <div class="game-info">
+        <p class="game-title">${game.title}</p>
         <p class="game-genre">${game.genre}</p>
         <p class="game-rating">⭐ ${game.rating}</p>
       </div>
@@ -116,7 +117,8 @@ function showgameModal(game) {
   document.querySelector("#dialog-content").innerHTML = /*html*/ `
     <img src="${game.image}" alt="Poster af ${game.title}" class="game-poster">
     <div class="dialog-details">
-     <p class="game-description">${game.description}</p>
+      <p class="game-title">${game.title}</p>
+      <p class="game-description">${game.description}</p>
       <p class="game-genre">${game.genre}</p>
       <p class="game-rating"> ${game.rating}</p>
       <p class="game-players">${game.players.min} til ${game.players.max}</p>
