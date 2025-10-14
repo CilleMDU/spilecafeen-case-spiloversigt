@@ -8,13 +8,14 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <header>
-
+    <header class="header">
+      <button class="book-button">Book Bord</button>
+      <img src="menu-symbol.png" alt="menu symbol">
     </header>
 
     <main>
         <div class="top">
-          <img src="Spilcafelogo-kopi 2.png" alt="logo" class="logo">
+          <img src="Spilcafelogo.png" alt="logo" class="logo">
           <h1 class="page-title">Spiloversigt</h1>
         </div>
 
@@ -31,10 +32,82 @@
           </div>
 
 
+          <div id="filter-menu">
+            <button class="filter-btn">Filter</button>
+
+            <div class="filter-menu-content">
+
+                <div class="genre-filter">
+                    <p class="genre-filter-title">Genre</p>
+
+                    <label><input type="checkbox" name="genre" value="abstrakt">Abstrakt</label>
+                    <label><input type="checkbox" name="genre" value="brætspil">Brætspil</label>
+                    <label><input type="checkbox" name="genre" value="familie">Familie</label>
+                    <label><input type="checkbox" name="genre" value="fliselægning">Fliselægning</label>
+                    <label><input type="checkbox" name="genre" value="kooperativt">Kooperativt</label>
+                    <label><input type="checkbox" name="genre" value="kortspil">Kortspil</label>
+                    <label><input type="checkbox" name="genre" value="mysterie">Mysterie</label>
+                    <label><input type="checkbox" name="genre" value="ordspil">Ordspil</label>
+                    <label><input type="checkbox" name="genre" value="party">Party</label>
+                    <label><input type="checkbox" name="genre" value="strategi">Strategi</label>
+                    <label><input type="checkbox" name="genre" value="terning">Terning</label>
+                </div>
+                
+                <div class="sprog-filter">
+                    <p>Sprog</p>
+
+                    <label><input type="checkbox" name="sprog" value="dansk">Dansk</label>
+                    <label><input type="checkbox" name="sprog" value="engelsk">Engelsk</label>
+                </div>
+
+                <div class="sværhedsgrad-filter">
+                    <p>Sværhedsgrad</p>
+
+                    <label><input type="checkbox" name="sværhedsgrad" value="let">Let</label>
+                    <label><input type="checkbox" name="sværhedsgrad" value="mellem">Mellem</label>
+                    <label><input type="checkbox" name="sværhedsgrad" value="svær">Svær</label>
+                </div>
+
+                <div class="alder-filter">
+                    <p>Alder</p>
+
+                    <div class="alder-range">
+                        <input type="number" id="alder-from" placeholder="0" min="0" max="99" step="1" />
+                         <span class="alder-separator">→</span>
+                         <input type="number" id="alder-to" placeholder="99" min="0" max="99" step="1" />
+                     </div>
+                </div>
+
+                <div class="spillere-filter">
+                    <p>Spillere</p>
+
+                    <div class="spillere-range">
+                        <input type="number" id="spillere-from" placeholder="0" min="0" max="99" step="1" />
+                         <span class="spillere-separator">→</span>
+                         <input type="number" id="spillere-to" placeholder="99" min="0" max="99" step="1" />
+                     </div>
+                </div>
+
+                <div class="playtime-filter">
+                    <p>Spilletid</p>
+
+                    <div class="playtime-range">
+                        <input type="number" id="playtime-from" placeholder="0" min="0" max="99" step="1" />
+                         <span class="playtime-separator">→</span>
+                         <input type="number" id="playtime-to" placeholder="99" min="0" max="99" step="1" />
+                     </div>
+                </div>
+
+                <button id="save-btn">Gem filter</button>
+            </div>
+            
+          </div>
+
+
+
 
 
             </div>
-          </div>
 
           <div class="filter-group">
             <select id="sort-select">
@@ -42,13 +115,11 @@
               <option value="title">Titel (A-Å)</option>
             </select>
           </div>
-        </div>
 
 
           <button id="clear-filters" class="clear-btn">
             <span class="btn-icon">Ryd filter</span>
           </button>
-        </div>
       </section>
       <section id="game-list" class="game-grid">
       </section>

@@ -4,4 +4,252 @@
   box-sizing: border-box;
 }
 
+.header {
+  width: 100%;
+  max-width: 402px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: rgb(187, 0, 0);
+  margin: 0 auto;
+}
 
+.book-button {
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 50px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 0;
+  background-color: #f2efed;
+  width: 100%;
+}
+
+main {
+  width: 402px;
+  background-color: #f2efed;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.logo {
+  width: 115px;
+  height: 87px;
+  flex-shrink: 0;
+  aspect-ratio: 115/87;
+}
+
+.page-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.filterbar {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.filter-row-main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: stretch;
+}
+
+.dropdown-row {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.filter-group:first-child {
+  width: 100%;
+}
+
+.filter-group.dropdown {
+  flex: 1;
+}
+
+.filter-group {
+  width: 100%;
+}
+
+.filter-group input,
+.filter-group select {
+  width: 100%;
+  padding: 12px;
+  border: 3px solid #000000;
+  border-radius: 25px;
+  font-size: 16px;
+}
+
+#search-input {
+  width: 100%;
+}
+
+#clear-filters {
+  padding: 10px 20px;
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.mest-popular-label {
+  color: #000;
+  font-family: Futura;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.game-grid {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.game-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+dialog#game-dialog {
+  border: none;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  padding: 0;
+  max-width: 360px;
+  max-height: 100vh;
+  background: white;
+  color: var(--text);
+  overflow: hidden;
+  position: relative;
+  margin: auto;
+}
+
+dialog#game-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+}
+
+#close-dialog {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-light);
+  border: none;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  z-index: 10;
+}
+
+#close-dialog:hover {
+  background: var(--error);
+  color: white;
+  transform: scale(1.1);
+}
+
+#dialog-content {
+  padding: 1.5rem 1.75rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-items: start;
+  overflow-y: auto;
+  max-height: 90vh;
+}
+
+#dialog-content img.game-poster {
+  width: 340px;
+  height: 340px;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.dialog-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 1rem;
+  color: #222;
+}
+
+#dialog-content h2 {
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.2;
+  margin: 0 0 1rem 0;
+}
+
+#dialog-content p {
+  color: var(--text-light);
+  line-height: 1.6;
+  margin: 0 0 1rem 0;
+}
+
+#dialog-content p strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+#dialog-content .game-genre {
+  color: var(--secondary);
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+#dialog-content .game-rating {
+  color: var(--warning);
+  font-weight: 600;
+  font-size: 1.125rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.game-description {
+  margin-top: 1rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #222;
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spilcafe favoritside</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<header class="header">
+      <button class="book-button">Book Bord</button>
+      <img src="menu-symbol.png" alt="menu symbol">
+    </header>
+
+    <main>
+        <div class="top">
+          <img src="Spilcafelogo.png" alt="logo" class="logo">
+          <h1 class="page-title">Farvoritter</h1>
+        </div>
+
+        <section class="filterbar">
+        <div class="filter-row-main">
+          <div class="filter-group search-group">
+            <input type="text" id="search-input" placeholder="Søg efter spil..." />
+          </div>
+            </div>
+
+          <div class="filter-group">
+            <select id="sort-select">
+              <option value="rating">Mest populære</option>
+              <option value="title">Titel (A-Å)</option>
+            </select>
+          </div>
+      </section>
+      <section id="game-list" class="game-grid">
+
+
+      </section>
+    </main>
+
+
+    <footer>
+        
+    </footer>
+
+
+  <dialog id="game-dialog">
+      <form method="dialog">
+        <button id="close-dialog" aria-label="Close">✕</button>
+        <div id="dialog-content">
+        </div>
+      </form>
+    </dialog>
+
+    <script src="script-fave.js"></script>
+</body>
+</html>
