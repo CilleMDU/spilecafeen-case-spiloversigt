@@ -2,10 +2,15 @@
 
 document.addEventListener("DOMContentLoaded", initApp);
 
+const isFavoritesPage = document.body.classList.contains("favorites-page");
+
 let allgames = [];
 
 function initApp() {
-  getgames();
+  if (isFavoritesPage) {
+    showFavoritedGames();
+  } else {
+    getgames();
 
   document
     .querySelector("#search-input")
@@ -35,6 +40,7 @@ function initApp() {
     .querySelector("#playtime-from")
     .addEventListener("input", filtergames);
   document.querySelector("#playtime-to").addEventListener("input", filtergames);
+  }
 }
 
 async function getgames() {
@@ -66,6 +72,9 @@ function displaygames(games) {
 
 function displaygame(game) {
   const gameList = document.querySelector("#game-list");
+  const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+  const isFavorited = favorites.some((fav) => fav.title === game.title);
 
   const gameHTML = /*html*/ `
     <article class="game-card" tabindex="0">
@@ -74,6 +83,9 @@ function displaygame(game) {
            class="game-poster" />
       <div class="game-info">
         <p class="game-title">${game.title}</p>
+        <button class="favorite-btn ${isFavorited ? "favorited" : ""}">
+          ${isFavorited ? "❤️" : "♡"}
+        </button>
         <p class="game-genre">${game.genre}</p>
         <p class="game-rating">⭐ ${game.rating}</p>
       </div>
@@ -83,6 +95,29 @@ function displaygame(game) {
   gameList.insertAdjacentHTML("beforeend", gameHTML);
 
   const newCard = gameList.lastElementChild;
+  const favoriteBtn = newCard.querySelector(".favorite-btn");
+
+
+  favoriteBtn.addEventListener("click", function (event) {
+    event.stopPropagation();
+    const currentFavorites =
+      JSON.parse(localStorage.getItem("favorites")) || [];
+    const index = currentFavorites.findIndex((fav) => fav.title === game.title);
+
+    if (index === -1) {
+  
+      currentFavorites.push(game);
+      favoriteBtn.classList.add("favorited");
+      favoriteBtn.textContent = "❤️";
+    } else {
+   
+      currentFavorites.splice(index, 1);
+      favoriteBtn.classList.remove("favorited");
+      favoriteBtn.textContent = "♡";
+    }
+
+    localStorage.setItem("favorites", JSON.stringify(currentFavorites));
+  });
 
   newCard.addEventListener("click", function () {
     showgameModal(game);
@@ -94,6 +129,72 @@ function displaygame(game) {
       showgameModal(game);
     }
   });
+}
+
+function showFavoritedGames(){
+  const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  document
+    .querySelector("#search-input")
+    .addEventListener("input", filterFavorites);
+  document
+    .querySelector("#sort-select")
+    .addEventListener("change", filterFavorites);
+
+function filterFavorites() {
+    const searchValue = document.querySelector("#search-input").value.toLowerCase();
+    const sortValue = document.querySelector("#sort-select").value;
+
+    let filtered = favorites;
+
+    if (searchValue) {
+      filtered = filtered.filter(game =>
+        game.title.toLowerCase().includes(searchValue)
+      );
+    }
+
+    if (sortValue === "rating") {
+      filtered.sort((a, b) => b.rating - a.rating);
+    } else if (sortValue === "title") {
+      filtered.sort((a, b) => a.title.localeCompare(b.title));
+    }
+
+    displayFavorites(filtered);
+  }
+
+  filterFavorites();}
+
+  function displayFavorites(games){
+    const container = document.querySelector("#game-list-favorited");
+    container.innerHTML = "";
+
+    if (games.length === 0) {
+      container.innerHTML = "<p>Ingen favoritter fundet.</p>";
+      return;
+    }
+
+    for (const game of games) {
+    const gameCard = document.createElement("article");
+    gameCard.className = "game-card";
+    gameCard.innerHTML = `
+      <img src="${game.image}" alt="${game.title}" class="game-poster" />
+      <div class="game-info">
+        <p class="game-title">${game.title}</p>
+        <button class="favorite-btn favorited">❤️</button>
+        <p class="game-genre">${game.genre}</p>
+        <p class="game-rating">⭐ ${game.rating}</p>
+      </div>
+    `;
+
+    const favBtn = gameCard.querySelector(".favorite-btn");
+    favBtn.addEventListener("click", () => {
+      let currentFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+      currentFavorites = currentFavorites.filter(fav => fav.title !== game.title);
+      localStorage.setItem("favorites", JSON.stringify(currentFavorites));
+      showFavoritedGames(); 
+    });
+    gameCard.addEventListener("click", () => showgameModal(game));
+    container.appendChild(gameCard);
+  }
 }
 
 function populateLocationDropdown() {
@@ -123,10 +224,19 @@ function populateLocationDropdown() {
 }
 
 function showgameModal(game) {
+
+  const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  const isFavorited = favorites.some((fav) => fav.title === game.title);
+
   document.querySelector("#dialog-content").innerHTML = /*html*/ `
     <img src="${game.image}" alt="Poster af ${game.title}" class="game-poster">
     <div class="dialog-details">
       <p class="game-title">${game.title}</p>
+      <button type="button" class="favorite-btn ${
+        isFavorited ? "favorited" : ""
+       }">
+       ${isFavorited ? "❤️" : "♡"}
+       </button>
       <p class="game-description">${game.description}</p>
       <p class="game-genre">${game.genre}</p>
       <p class="game-rating"> ${game.rating}</p>
@@ -139,6 +249,47 @@ function showgameModal(game) {
       <p class="game-language">${game.language}</p>
     </div>
   `;
+
+  const modalFavBtn = document.querySelector("#dialog-content .favorite-btn");
+
+  modalFavBtn.addEventListener("click", (event) => {
+    event.stopPropagation();
+
+    let currentFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    const index = currentFavorites.findIndex((fav) => fav.title === game.title);
+
+    if (index === -1) {
+      currentFavorites.push(game);
+      modalFavBtn.classList.add("favorited");
+      modalFavBtn.textContent = "❤️";
+    } else {
+      currentFavorites.splice(index, 1);
+      modalFavBtn.classList.remove("favorited");
+      modalFavBtn.textContent = "♡";
+    }
+
+    localStorage.setItem("favorites", JSON.stringify(currentFavorites));
+
+    const allCardButtons = document.querySelectorAll(
+      ".game-card .favorite-btn"
+    );
+    allCardButtons.forEach((btn) => {
+      const titleEl = btn.closest(".game-card").querySelector(".game-title");
+      if (titleEl && titleEl.textContent === game.title) {
+        if (index === -1) {
+          btn.classList.add("favorited");
+          btn.textContent = "❤️";
+        } else {
+          btn.classList.remove("favorited");
+          btn.textContent = "♡";
+        }
+      }
+    });
+
+    if (isFavoritesPage) {
+      showFavoritedGames();
+    }
+  });
 
   document.querySelector("#game-dialog").showModal();
 }

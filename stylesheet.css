@@ -253,3 +253,15 @@ dialog#game-dialog::backdrop {
   line-height: 1.6;
   color: #222;
 }
+
+.favorite-btn {
+  font-size: 24px;
+  cursor: pointer;
+  color: black;
+  background: none;
+  border: none;
+}
+
+.favorite-btn.favorited {
+  color: red;
+}
