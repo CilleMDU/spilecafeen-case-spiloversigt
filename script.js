@@ -234,19 +234,26 @@ function showgameModal(game) {
       <p class="game-title">${game.title}</p>
       <button type="button" class="favorite-btn ${
         isFavorited ? "favorited" : ""
-       }">
-       ${isFavorited ? "❤️" : "♡"}
+      }">
+       ${isFavorited ? "❤️️" : "♡"}
        </button>
-      <p class="game-description">${game.description}</p>
-      <p class="game-genre">${game.genre}</p>
-      <p class="game-rating"> ${game.rating}</p>
-      <p class="game-players">${game.players.min} til ${game.players.max}</p>
-      <p class="game-difficulty">${game.difficulty}</p>
-      <p class="game-age">${game.age}</p>
-      <p class="game-playtime">${game.playtime}</p>
-      <p class="game-location">${game.location}</p>
-      <p class="game-shelf">${game.shelf}</p>
-      <p class="game-language">${game.language}</p>
+      <p class="game-description-large">${game.description}</p>
+      <p class="game-genre"><strong>Genre:</strong> ${game.genre}</p>
+      <p class="game-rating"><strong>Rating:</strong> ⭐ ${game.rating}</p>
+      <p class="game-players"><strong>Spillere:</strong> ${
+        game.players.min
+      } til ${game.players.max}</p>
+      <p class="game-difficulty"><strong>Sværhedsgrad:</strong> ${
+        game.difficulty
+      }</p>
+      <p class="game-age"><strong>Alder:</strong> ${game.age}</p>
+      <p class="game-playtime"><strong>Spilletid:</strong> ${
+        game.playtime
+      } minutter</p>
+      <p class="game-location"><strong>Lokation:</strong> ${game.location}</p>
+      <p class="game-shelf"><strong>Hylde:</strong> ${game.shelf}</p>
+      <p class="game-language"><strong>Sprog:</strong> ${game.language}</p>
+      <p class="game-rules"><strong>Regler:</strong> ${game.rules}</p>
     </div>
   `;
 

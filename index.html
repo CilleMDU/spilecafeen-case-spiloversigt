@@ -11,6 +11,11 @@
     <header class="header">
       <button class="book-button">Book Bord</button>
       <img src="menu-symbol.png" alt="menu symbol">
+       <nav class="dropdown-content">
+      <ul>
+        <li><a href="favorit.html">Favoritter</a></li>
+      </ul>
+    </nav>
     </header>
 
     <main>
@@ -33,12 +38,14 @@
 
 
           <div id="filter-menu">
-            <button class="filter-btn">Filter</button>
+            <input type="checkbox" name="filter-check" id="filter-check">
+            <label for="filter-check" class="filter-btn">Filter</label>
 
             <div class="filter-menu-content">
 
+                <input type="checkbox" name="genre-label" id="genre-label">
+                <label for="genre-label">Genre</label>
                 <div class="genre-filter">
-                    <p class="genre-filter-title">Genre</p>
 
                     <label><input type="checkbox" name="genre" value="abstrakt">Abstrakt</label>
                     <label><input type="checkbox" name="genre" value="brætspil">Brætspil</label>
@@ -53,23 +60,27 @@
                     <label><input type="checkbox" name="genre" value="terning">Terning</label>
                 </div>
                 
+                <input type="checkbox" name="sprog-label" id="sprog-label">
+                <label for="sprog-label">Sprog</label>
                 <div class="sprog-filter">
-                    <p>Sprog</p>
 
                     <label><input type="checkbox" name="sprog" value="dansk">Dansk</label>
                     <label><input type="checkbox" name="sprog" value="engelsk">Engelsk</label>
                 </div>
 
-                <div class="sværhedsgrad-filter">
-                    <p>Sværhedsgrad</p>
 
+                <input type="checkbox" name="sværhedsgrad-label" id="sværhedsgrad-label">
+                <label for="sværhedsgrad-label">Sværhedsgrad</label>
+                <div class="sværhedsgrad-filter">
                     <label><input type="checkbox" name="sværhedsgrad" value="let">Let</label>
                     <label><input type="checkbox" name="sværhedsgrad" value="mellem">Mellem</label>
                     <label><input type="checkbox" name="sværhedsgrad" value="svær">Svær</label>
                 </div>
 
+
+                <input type="checkbox" name="alder-label" id="alder-label">
+                <label for="alder-label">Alder</label>
                 <div class="alder-filter">
-                    <p>Alder</p>
 
                     <div class="alder-range">
                         <input type="number" id="alder-from" placeholder="0" min="0" max="99" step="1" />
@@ -78,8 +89,9 @@
                      </div>
                 </div>
 
+                <input type="checkbox" name="spillere-label" id="spillere-label">
+                <label for="spillere-label">Spillere</label>
                 <div class="spillere-filter">
-                    <p>Spillere</p>
 
                     <div class="spillere-range">
                         <input type="number" id="spillere-from" placeholder="0" min="0" max="99" step="1" />
@@ -88,6 +100,8 @@
                      </div>
                 </div>
 
+                <input type="checkbox" name="playtime-label" id="playtime-label">
+                <label for="playtime-label">Spilletid</label>
                 <div class="playtime-filter">
                     <p>Spilletid</p>
 

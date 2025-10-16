@@ -142,6 +142,17 @@ main {
   gap: 8px;
 }
 
+.game-card img {
+  width: 120px;  
+  height: 120px;  
+  object-fit: cover;
+  border-radius: 10px;
+  flex-shrink: 0;  /* gør så billedet ikke skrumper */
+  margin-left: 0;
+}
+
+
+
 dialog#game-dialog {
   border: none;
   border-radius: var(--radius);
@@ -264,4 +275,219 @@ dialog#game-dialog::backdrop {
 
 .favorite-btn.favorited {
   color: red;
+}
+
+#filter-check {
+  display: none;
+}
+
+.filter-btn {
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 50px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#filter-menu {
+  position: relative;
+}
+
+.filter-menu-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 15px;
+  padding: 15px;
+  margin-top: 10px;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling af dem man kan klikke på */
+.filter-menu-content > label {
+  font-weight: bold;
+  display: block;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+/* Style for the filter options (not the main categories) */
+.genre-filter label,
+.sprog-filter label,
+.sværhedsgrad-filter label,
+.alder-filter label,
+.spillere-filter label,
+.playtime-filter label {
+  font-weight: normal;
+  display: block;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+
+#filter-check:checked ~ .filter-menu-content {
+  display: block;
+}
+
+.genre-filter {
+  display: none;
+}
+
+#genre-label:checked ~ .genre-filter {
+  display: block;
+}
+
+.sprog-filter {
+  display: none;
+}
+
+#sprog-label:checked ~ .sprog-filter {
+  display: block;
+}
+
+.sværhedsgrad-filter {
+  display: none;
+}
+
+#sværhedsgrad-label:checked ~ .sværhedsgrad-filter {
+  display: block;
+}
+
+.alder-filter {
+  display: none;
+}
+
+#alder-label:checked ~ .alder-filter {
+  display: block;
+}
+
+.spillere-filter {
+  display: none;
+}
+
+#spillere-label:checked ~ .spillere-filter {
+  display: block;
+}
+
+.playtime-filter {
+  display: none;
+}
+
+#playtime-label:checked ~ .playtime-filter {
+  display: block;
+}
+
+/* skjuler checkboxes */
+.filter-menu-content input[type="checkbox"] {
+  display: none;
+}
+
+/* får dem til at ligne noget man kan klikke på */
+.filter-menu-content label {
+  display: block;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+/* margin til alle filtre */
+.genre-filter,
+.sprog-filter,
+.sværhedsgrad-filter,
+.alder-filter,
+.spillere-filter,
+.playtime-filter {
+  margin-top: 8px;
+}
+
+
+#save-btn {
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 50px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#dialog-content .game-title {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.75rem;
+  right: 1.75rem;
+  z-index: 5;
+  color: black;
+  padding: 1rem 1.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: flex-start;
+  margin: 0;
+}
+
+#dialog-content .game-description {
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+#dialog-content .game-description-large {
+  font-weight: bold;
+  text-align: center;
+  margin: 1rem 0;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+
+.menu-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 20px;
+  width: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  top: 100%;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dropdown-content ul,
+.dropdown-content li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 8px 4px;
+  text-decoration: none;
+  display: block;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.menu-dropdown:hover .dropdown-content {
+  display: block;
 }
