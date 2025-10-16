@@ -448,9 +448,9 @@ dialog#game-dialog::backdrop {
 }
 
 
-#dropdown-content-check {
+.menu-dropdown {
   position: relative;
-  display: none;
+  display: inline-block;
 }
 
 .dropdown-content {
@@ -488,6 +488,6 @@ dialog#game-dialog::backdrop {
   background-color: #f1f1f1;
 }
 
-#dropdown-content-check:checked ~ .dropdown-content {
+.menu-dropdown:hover .dropdown-content {
   display: block;
 }
